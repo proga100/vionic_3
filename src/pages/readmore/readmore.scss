@@ -1,0 +1,81 @@
+page-readmore {
+    .feedviewscroll {
+        margin-top: 0px !important;
+        background: #f5f5f4;
+    }
+
+    ion-scroll {
+        height: 50px!important;
+        width: 100vw;
+    }
+    .feedlist {
+        margin-top: 1px;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+        }
+    }
+    .activelist1
+    {
+        padding-left: 5px;
+        padding-right: 6px;
+    }
+    .activitylist
+    {
+        padding-left: 2px;
+        padding-right: 2px;    
+    }
+    .activelist1 p
+    {
+        border-bottom: solid 3px #332f20;
+        padding-bottom: 3px;
+        font-size: 14px;
+    }
+    .activitylist p
+    {
+        padding-bottom: 3px;
+        font-size: 15px;
+    }
+    .activitylist:last-child {
+        margin-right: 22px
+    }
+    .activitylist1:last-child {
+        margin-right: 22px
+    }
+    #list {
+
+   }
+   #list ul {
+      margin-top: 3px;
+    padding-left: 22px;
+
+}
+   #list ul li {
+       text-align: left;
+       list-style: disc;
+       margin: 10px 0px;
+}
+.feature
+{
+    background: #f5f5f4;
+    padding: 10px 7px 9px 7px;
+    font-size: 17px;
+}
+.description
+{
+    padding-left: 8px;
+
+}
+.close
+{
+        position: absolute;
+    left: 10px;
+
+}
+.list {
+    margin: 0;
+}
+}
+

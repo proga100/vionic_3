@@ -1,0 +1,168 @@
+page-compareitems {
+.item ion-avatar ion-img, .item ion-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius:0px;
+}
+.preview img
+{
+	 width: 20px;
+	 height:20px;
+}
+.preview
+{
+	padding:0px!important;
+}
+.item
+{
+    padding-left: 0;
+ }
+ .label 
+ {
+    margin: 0;
+}
+.productname
+{
+	overflow: hidden;
+    display: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+}
+.id
+{
+    color: #7d7a7a;
+    font-size: 12px;
+}
+.offer
+{
+    text-decoration: line-through;
+    color: #7d7a7a;
+}
+.item ion-avatar[item-left], .item ion-thumbnail[item-left], .item ion-avatar[item-start], .item ion-thumbnail[item-start] {
+    margin: 0;
+}
+.sliding
+{
+	border-bottom:solid 1px #ccc;
+}
+.list ion-item-options {
+    border-bottom: 0px solid #dedede;
+}
+
+.sliding ion-icon {
+    display: inline-block;
+    font-size: 27px;
+        padding-bottom: 0px!important;
+}
+.cart
+{
+
+	background-color: #eeede7!important;
+}
+.cart ion-icon
+{
+	color:#000;
+}
+.delete ion-icon
+{
+	color:#fff;
+}  
+.delete
+{
+		background-color: #eb3148!important;
+}
+.delete span
+{
+	color: #eb3148!important;
+}
+.cart span
+{
+	color: #eeede7!important;
+}
+.compareitems .toolbar-background
+{
+      border-color: #ece052;
+    background: #ece052;
+}
+.compareitems .toolbar-title
+{
+      font-size: 15px;
+    color:#000;
+        text-align: center;
+}
+.latest
+{
+    position: absolute;
+    right: 0;
+    background: #ea7125;
+    color: #fff;
+    width: 50px;
+    text-align: center;
+    bottom: 8px;
+    height: 20px;
+    border-radius: 3px;
+    line-height: 21px;
+}
+ion-scroll.scroll-x .scroll-content {
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+    .feedviewscroll {
+        margin-top: 0px !important;
+        width:100%;
+        float:left;
+    }
+.activitylist
+{
+
+    border-right: solid 1px #ccc;
+    text-align:center;
+
+}
+    ion-scroll {
+        height: 100%!important;
+        width: 100%!important;
+    }
+    .feedlist {
+        margin-top: 1px;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+    
+    .scroll-item {
+              display: table-cell;
+        }
+    }
+    .description
+    {
+    white-space: initial;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 4px;
+    font-size: 17px;
+        width: 150px;
+
+    }
+    .activitylist img
+    {
+    height: 110px;
+    width: 110px;
+        padding: 5px;
+    }
+    .head_description
+    {
+    background: #f1f1f1;
+    padding: 8px;
+    border-top: solid 2px #ccc;
+    border-bottom: solid 2px #ccc;
+    font-size: 17px;
+    margin: 0;
+    width: 637px;
+
+    }
+    
+
+}

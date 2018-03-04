@@ -1,0 +1,55 @@
+hold {
+.ion-page {
+    background: #fff;
+}
+.welcome
+{
+	color: #fff;
+    margin-top: 90px;
+    text-align: center;
+}
+
+.features
+{
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+}
+.tab
+{
+	    font-size: 21px;
+    color: #fff;
+    text-align: center;
+    margin: 32% auto;
+    margin-bottom:0px;
+}
+.holdimage img
+{
+	    width: 40%;
+    margin-left: 25%;
+    margin-bottom: 0;
+        width: 120px;
+            height: 120px;
+}
+.multiple
+{
+
+    color: #fff;
+    text-align: center;
+    margin: 45px auto;
+    font-size: 20px;
+
+}
+ion-footer
+{
+	    background: #f8e71c;
+    text-align: center;
+    padding: 12px;
+    font-size: 17px;
+}
+}
+.ion-page.show-page {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.71);
+
+}

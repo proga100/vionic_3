@@ -1,0 +1,119 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.toolbar-background {
+    border-color: #332f20;
+    background: #332f20;
+}
+.bar-button-default, .bar-button-clear-default, .bar-button-default {
+    color: #fff;
+    background-color: transparent;
+}
+.toolbar-title
+{
+	color: #fff;
+}
+.searchbar
+{
+	background: #332f20;
+}
+.bar-button-default, .bar-button-clear-default, .bar-button-default {
+    color: #fff;
+    background-color: transparent;
+}
+.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+}
+.profileimage img
+{
+    border-radius:100%;
+}
+.profilename
+{
+    margin: -2px;;
+    padding-left: 48px;
+    font-size: 19px;
+    font-weight: 400;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.profilehead
+{
+        margin-top: 25px;
+}
+.listheader
+{
+        margin: 10px 0 16px;
+           //left: 7px;
+    //border-left: solid 3px #ccc;
+    //height: 0px;
+}
+.listbutton .item-inner
+{
+        border-bottom: 0px solid #dedede!important;
+}
+.listbutton img
+{
+        width: 25px;
+    margin-top: -3px;
+    position: absolute;
+}
+.titlesidemenu //side menu code
+{
+        margin-left: 35px;
+    margin-top: 17px;
+    font-size: 19px;
+    font-weight: 400;
+}
+   .sidemenu .scroll-content
+   {
+   background-image: url(../assets/img/sidemenu.png)!important;
+   // background-size: 100% 100%!important;
+   }
+   .activemenu
+   {
+    border-left: solid 3px #565656;
+    line-height: 0;
+    font-size: 28px;
+    color: rgba(204, 204, 204, 0);
+    margin-top: 10px;
+    padding-left: 6px;
+   }
+
+//@-webkit-keyframes slideInBothWays {
+  // 0% {
+   // transform: translate3d(-100%,0,0);
+  //}
+  
+  //50% {
+  //  transform: translate3d(50%,0,0);
+  //}
+  
+  //100% {
+   // transform: translate3d(0,0,0);
+  //}
+//}
+  
+//.slide-in-both-ways {
+//  animation: slideInBothWays ease-in 1;
+//  animation-duration: 750ms;
+  
+// }

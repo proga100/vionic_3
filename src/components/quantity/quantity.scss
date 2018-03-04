@@ -1,0 +1,201 @@
+quantity {
+.list-header {
+    background: #332f20;
+    color: #fff;
+    margin-bottom: 0;
+    border-top: 0px solid #dedede;
+    text-align: center;
+}
+.refinesearch
+{
+    background: #332f20;
+    color: #fff;
+    margin-bottom: 0;
+    border-top: 0px solid #dedede;
+    text-align: center;
+    padding: 12px;
+}
+.size
+{
+    background: #ccc;
+    margin-bottom: 0;
+    border-top: 0px solid #ccc;
+    padding: 12px;
+    margin: 0;
+    font-size: 13px;
+}
+.price
+{
+    background: #ccc;
+    margin-bottom: 0;
+    border-top: 0px solid #ccc;
+    padding: 12px;
+    margin: 0;
+    font-size: 13px;    
+}
+.price span
+{
+    float:right;
+}
+.sizechart
+{
+    background: #fff;
+    margin: 0;
+}
+.sizechart p
+{
+        border: solid 1px #ccc;
+    text-align: center;
+    height: 35px;
+    width: 35px;
+    line-height: 34px;
+    border-radius: 2px;
+    color: #948989;
+}
+range-md.range-has-pin {
+    padding-top: 20px;
+}
+.range .range-bar-active {
+    background: #000;
+}
+.range-md .range-knob {
+    left: 13px;
+    top: 6px;
+    width: 30px;
+    height: 31px;
+}
+.range-md-dark .range-bar-active, .range-md-dark .range-knob, .range-md-dark .range-pin, .range-md-dark .range-pin::before {
+    background: #f8e71c;
+}
+.selectsize
+{
+        text-align: center;
+    height: 35px;
+    width: 35px;
+    line-height: 34px;
+    border-radius: 2px;
+    color: #948989;
+    background: #000;
+    border: #000!important;
+    color: #fff!important;
+}
+.color1 p ion-icon
+{
+    color:#000!important;
+}
+.color2 p
+{
+    color:#fff!important;
+    background:#090909!important;
+    border:#090909!important
+}
+.color2 p ion-icon
+{
+        color:#fff!important;
+}
+.color3 p
+{
+    color:#fff!important;
+    background:#304059!important;
+    border:#304059!important
+}
+.color3 p ion-icon
+{
+        color:#fff!important;
+}
+.color4 p
+{
+    color:#fff!important;
+    background:#5f573b!important;
+    border:#5f573b!important
+}
+.color4 p ion-icon
+{
+        color:#5f573b!important;
+}
+.color5 p
+{
+    color:#fff!important;
+    background:#c1a37c!important;
+    border:#c1a37c!important
+}
+.color5 p ion-icon
+{
+        color:#c1a37c!important;
+}
+.color6 p
+{
+    color:#fff!important;
+    background:#9b9b9b!important;
+    border:#9b9b9b!important
+}
+.color6 p ion-icon
+{
+        color:#fff!important;
+}
+.list {
+
+    margin-bottom: 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 500px;
+    overflow-y: scroll;
+
+}
+.content {
+    color: #000;
+    background-color: rgba(117, 102, 46, 0);
+}
+.ion-footer
+{
+        background: #000;
+}
+.toolbar-title-md {
+    padding: 0 12px;
+    font-size: 15px;
+    height: 40px;
+    color: #424242;
+    line-height: 40px;
+    text-align: center;
+}
+.clearfillters
+{
+    background: #332f20;
+    color:#fff;
+}
+.clearfillters .toolbar-title
+{
+    
+    color:#fff;
+}
+.applyfillters
+{
+    background: #f8e71c;
+    color:#000;
+}
+.radio-md .radio-inner {
+    left: 3px;
+    top: 3px;
+        background-color: #332f20;
+    }
+.item-radio.item-md ion-label {
+    margin-left: 0;
+    color: #a09595;
+}
+.item-radio-checked.item-md ion-label {
+    color: #332f20;
+}   
+.radio-md .radio-icon
+{
+        width: 18px;
+    height: 18px;
+}
+.close
+{
+    position: absolute;
+    left: 16px;
+    font-size: 25px;
+    top: 10px;
+}
+}

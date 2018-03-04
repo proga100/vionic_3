@@ -1,0 +1,53 @@
+page-thambnail {
+ion-slides {
+    display: block;
+    width: 100%;
+    height: 85%;
+}
+   
+   
+    ion-scroll {
+        height: 58px!important;
+        width: 100vw;
+    }
+    .feedlist {
+        margin-top: 1px;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+        }
+    }
+  
+    .scroll-zoom-wrapper {
+        margin-left: 2%;
+        width: 100%;
+    }
+   
+    
+    ion-scroll {
+        height: 58px!important;
+        width: 100vw;
+    }
+    .feedlist {
+        margin-top: 1px;
+    }
+    ion-scroll[scrollX] {
+        white-space: nowrap;
+        .scroll-item {
+            display: inline-block;
+        }
+    }
+   
+    .scroll-zoom-wrapper {
+        margin-left: 2%;
+        width: 100%;
+    }
+
+    .feedviewscroll img {
+    width: 60px;
+    height: 60px;
+    }
+   
+}

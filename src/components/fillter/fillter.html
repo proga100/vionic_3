@@ -1,0 +1,94 @@
+<ion-content>
+<ion-list>
+   <p class="refinesearch">REFINE YOUR SEARCH</p>
+   <p class="size">SIZE</p>
+   <ion-row class="sizechart">
+      <ion-col col-2>
+         <p>XS</p>
+      </ion-col>
+      <ion-col col-2>
+         <p>S</p>
+      </ion-col>
+      <ion-col col-2>
+         <p class="selectsize">M</p>
+      </ion-col>
+      <ion-col col-2>
+         <p>L</p>
+      </ion-col>
+      <ion-col col-2>
+         <p>XL</p>
+      </ion-col>
+      <ion-col col-2>
+         <p>XXL</p>
+      </ion-col>
+   </ion-row>
+   <p class="price">PRICE <span>$60 to $120</span></p>
+    <ion-item>
+      <ion-range dualKnobs="true"  [(ngModel)]="structure" color="dark">
+      </ion-range>
+    </ion-item>
+    <p class="size">COLOR</p>
+   <ion-row class="sizechart">
+      <ion-col col-2 class="color1">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+      <ion-col col-2 class="color2">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+      <ion-col col-2 class="color3">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+      <ion-col col-2 class="color4">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+      <ion-col col-2 class="color5">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+      <ion-col col-2 class="color6">
+         <p><ion-icon name="checkmark"></ion-icon></p>
+      </ion-col>
+   </ion-row>
+   <p class="size">SPECIAL FEATURES</p>
+   <ion-item>
+    <ion-label>Big & Tall(1)</ion-label>
+    <ion-checkbox item-right secondary checked="true" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <p class="size">FABRIC</p>
+   <ion-item>
+    <ion-label>Brushed Cotton (21)</ion-label>
+    <ion-checkbox item-right secondary checked="true" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <ion-item>
+    <ion-label>Moleskin (12)</ion-label>
+    <ion-checkbox item-right secondary checked="false" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <ion-item>
+    <ion-label>Rugged twill(1)</ion-label>
+    <ion-checkbox item-right secondary checked="false" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <ion-item>
+    <ion-label>Wool(1)</ion-label>
+    <ion-checkbox item-right secondary checked="true" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <p class="size">FEATURES</p>
+      <ion-item>
+    <ion-label>New(12)</ion-label>
+    <ion-checkbox item-right secondary checked="false" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+   <ion-item>
+    <ion-label>Sale(6)</ion-label>
+    <ion-checkbox item-right secondary checked="false" [(ngModel)]="aceito"></ion-checkbox>
+</ion-item>
+
+</ion-list>
+</ion-content>
+<ion-footer>
+<ion-row>
+<ion-col col-6 class="clearfillters">
+<ion-title>CLEAR FILTERS</ion-title>
+</ion-col>
+<ion-col col-6 class="applyfillters">
+<ion-title>APPLY FILTERS</ion-title>
+</ion-col>
+</ion-row>
+</ion-footer>

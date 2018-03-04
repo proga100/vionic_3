@@ -1,0 +1,85 @@
+<ion-header #head>
+    <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+<div class="t_img">
+ <ion-col col-6 class="profileimage">
+		   <img src="./assets/img/cis.png" />
+         </ion-col>
+		 
+		 </div>	
+
+    <div id="sp-top1" class="col-sm-6 col-md-6">
+<div class="sp-column ">
+<div class="sp-module ">
+<div class="sp-module-content">
+
+<div class="custom">
+
+		 
+	
+	<div class="contact-block__item contact-block__item--icon">
+<div class="contact-block__value-wrap">
+<span class="contact-block__label"> 
+CENTRAL INDUSTRIAL SUPPLY</span> 
+<span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="sp-contact-info">
+<li class="sp-contact-phone">
+  <ion-icon name="phone-portrait"></ion-icon>
+ <a href="tel:318-628-2776">318-628-2776</a></li>
+ <li class="sp-contact-email">
+<ion-icon name="mail"></ion-icon>
+ <a href="mailto:info@cisupplystore.com">info@cisupplystore.com</a>
+ </li>
+ <li class="sp-contact-time">
+ <i class="fa fa-clock-o">
+ </i>Mon - Fri 8 AM - 5 PM</li>
+ </ul>
+ </div>
+ </div>
+      <ion-buttons end>
+         <button ion-button icon-only >
+            <ion-icon name="search"></ion-icon>
+         </button>
+      </ion-buttons>
+   </ion-navbar>
+   <ion-slides pager>
+      <ion-slide>
+	   
+         <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
+         <ion-title class="collection">Weldin Supply</ion-title>
+      </ion-slide>
+      <ion-slide>
+         <img src="https://www.cisupplystore.com/newvm/images/heater.jpeg" class="slide-banner">
+          <ion-title class="collection">Heater</ion-title>
+      </ion-slide>
+      <ion-slide>
+         <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
+          <ion-title class="collection">Welding Supply</ion-title>
+      </ion-slide>
+           
+   </ion-slides>
+</ion-header>
+<ion-content>
+
+
+<ion-row  *ngFor="let category of categories"  >
+ 
+     <ion-col class="catagory1 homeproduct"  text-wrap (click)="catagory(category)" >
+	      <ion-list class="productname">
+          <p>{{ category.categoryName }}  </p>
+         </ion-list>
+         
+        <!-- <img [src]="category.main_image" /> !-->
+	 </ion-col> 
+	 
+	 </ion-row >
+ 
+
+</ion-content>

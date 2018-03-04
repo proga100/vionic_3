@@ -1,0 +1,71 @@
+<ion-header>
+   <ion-navbar>
+      <ion-title>SELECT PREFERRED VENDORSqw2</ion-title>
+      <ion-buttons end>
+         <button ion-button icon-only (click)="home()">
+            <ion-icon name="close"></ion-icon>
+         </button>
+      </ion-buttons>
+   </ion-navbar>
+</ion-header>
+<ion-content>
+   <ion-row class="selectvendors">
+      <ion-col col-4>
+         <img src="assets/img/wallmart.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/amazon.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/target.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/macys.png" />
+      </ion-col>
+      <ion-col col-4>
+         <ion-list class="selected">
+            <img src="assets/img/tick.png" />
+         </ion-list>
+         <img src="assets/img/kohl.png" />
+      </ion-col>
+      <ion-col col-4>
+         <ion-list class="selected">
+            <img src="assets/img/tick.png" />
+         </ion-list>
+         <img src="assets/img/marshal.png" />
+      </ion-col>
+      <ion-col col-4>
+         <ion-list class="selected">
+            <img src="assets/img/tick.png" />
+         </ion-list>
+         <img src="assets/img/thehome.png" />
+      </ion-col>
+      <ion-col col-4>
+         <ion-list class="selected">
+            <img src="assets/img/tick.png" />
+         </ion-list>
+         <img src="assets/img/gg.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/jcp.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/bestbuy.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/sports.png" />
+      </ion-col>
+      <ion-col col-4>
+         <img src="assets/img/ross.png" />
+      </ion-col>
+   </ion-row>
+</ion-content>
+<ion-footer >
+   <ion-item>
+      <ion-label>Only Show result from selected vendors</ion-label>
+      <ion-checkbox color="dark" checked="true"></ion-checkbox>
+   </ion-item>
+   <ion-toolbar (click)="home()">
+      <ion-title>CONTINUE</ion-title>
+   </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,52 @@
+page-vendors {
+.selectvendors
+{
+	text-align:center;
+}
+.selectvendors [col-4]
+{
+	
+}
+.selectvendors [col-4] img
+{
+	height:70px;
+	width:80px;
+}
+.selected img
+{
+	    position: absolute;
+    top: 0;
+    margin: 0!important;
+    left: 0;
+    right: 0;
+    width: 100%!important;
+    height: 100%!important;
+}
+.toolbar-title {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+.footer .toolbar-background {
+    border-color: #ffff00;
+    background: #ffff00;
+}
+.footer .toolbar-title
+{
+	color: #332f20;
+}
+.item.item .checkbox{
+    position: static;
+    display: block;
+    margin: 9px 14px 9px 4px;
+}
+.label {
+    margin: 13px 8px 13px 0;
+    font-size: 13px;
+    font-weight:bold;
+}
+.header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before
+{
+	background-image:none;
+}
+}

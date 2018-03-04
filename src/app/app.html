@@ -1,0 +1,55 @@
+<ion-menu [content]="content" class="sidemenu">
+   <ion-header  menuClose>
+   </ion-header>
+   <ion-content  menuClose>
+      <ion-row class="profilehead">
+        
+         <ion-col col-6 class="profileimage">
+      
+      <img src="./assets/img/cis.png" />
+     <!-- <div class="card-title">CENTRAL INDUSTRIAL SUPPLY</div>
+      <div class="card-subtitle">Keep Shopping</div>
+	  
+	  !-->
+
+         </ion-col>
+      </ion-row>
+    
+      <ion-list class="listheader">
+	  
+         <button class="listbutton" menuClose ion-item  (click)="openPage('HomePage')">
+         <span class="activemenu"></span>
+		 <img src="assets/img/home_icon.png"> 
+		 <span class="titlesidemenu">Home</span>
+         </button>
+
+ <!--
+         <button class="listbutton" menuClose ion-item *ngFor="let p of categories" (click)="openPage(p)">
+         <span></span>
+        
+         <img src="{{ p.main_image }}">
+       
+         
+         <span class="titlesidemenu">{{p.categoryName}}</span>
+         </button>
+
+           !-->
+           
+      </ion-list>
+   </ion-content>
+</ion-menu>
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<style type="text/css">
+
+   .item-inner
+   {
+   border-bottom: 0px solid #dedede;
+
+   }
+   .item
+   {
+   background-color: rgba(255, 255, 255, 0);
+   }
+
+</style>
