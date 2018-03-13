@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
 import { WooCommerceProvider } from '../providers/woocommerce/woocommerce';
 import { Push } from '@ionic-native/push';
 import { IonicImageLoader } from 'ionic-image-loader';
@@ -13,6 +15,12 @@ import { ThambnailPage } from '../pages/thambnail/thambnail';
 import { CompareitemsPage } from '../pages/compareitems/compareitems';
 import { ReadmorePage } from '../pages/readmore/readmore';
 import { VendorsPage } from '../pages/vendors/vendors';
+import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
+
+import { AccountPage} from '../pages/account/account';
+import { Cart } from '../pages/cart/cart';
+import { Checkout } from '../pages/checkout/checkout';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -24,7 +32,7 @@ import { FillterComponent } from '../components/fillter/fillter';
 import { SizeComponent } from '../components/size/size';
 import { QuantityComponent } from '../components/quantity/quantity';
 import { VendorComponent } from '../components/vendor/vendor';
-
+import { CacheModule } from 'ionic-cache';
 @NgModule({
   declarations: [
     MyApp,
@@ -42,12 +50,20 @@ import { VendorComponent } from '../components/vendor/vendor';
     QuantityComponent,
     ReadmorePage,
     VendorsPage,
-    VendorComponent
+    VendorComponent,
+    SignupPage,
+  LoginPage,
+   AccountPage,
+   Cart,
+   Checkout
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicImageLoader.forRoot()
+    IonicImageLoader.forRoot(),
+    CacheModule.forRoot(),
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,14 +81,20 @@ import { VendorComponent } from '../components/vendor/vendor';
     SizeComponent,
     QuantityComponent,
     ReadmorePage,
-    VendorsPage
+    VendorsPage,
+    SignupPage,
+  LoginPage,
+  AccountPage,
+  Cart,
+  Checkout
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     WooCommerceProvider,
-	Push
+  Push,
+  
   ]
 })
 export class AppModule {}

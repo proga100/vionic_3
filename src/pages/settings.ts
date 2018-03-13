@@ -16,10 +16,10 @@ export class Settings {
     static cod_enabled: boolean = true;
     static cheque_enabled: boolean = false;
 
-    static razorpay_enabled: boolean = true;
+    static razorpay_enabled: boolean = false;
     static razorpay_key: string = "rzp_test_Ni9H4q0IBlfKLQ";
 
-    static paypal_enabled: boolean = true;
+    static paypal_enabled: boolean = false;
     static paypal_sandbox_key: string = "AYkkS2ObeSpaObaCqA3bybQjRNRMKOw_2vNSha7gmxESpG4l4AhEyMfYwuzrUFKSbWGhCsN-Vhtl5FOG";
     static paypal_production_key: string = "";
     static paypal_env: string[] = ["PayPalEnvironmentNoNetwork", "PayPalEnvironmentSandbox", "PayPalEnvironmentProduction"];
@@ -35,7 +35,7 @@ export class Settings {
     static onesignal_appId = "415f5a58-2c79-48fa-92b1-6e0d23886af0";
     static google_project_number = "542459717948";
 
-    static payumoney_enabled = true;
+    static payumoney_enabled = false;
     static payumoney_live = false; // Set this to true for live, false for testing
     static payumoney_header = Settings.payumoney_live ? "LIz3RsACcO5xUmEH6r/jRUWTTrfo6hCrFTZBGiLpXWB8=" : "KpNTiy57L6OFjS2D3TqPod8+6nfGmRVwVMi5t9jR4NU="; //This is live header and test header. Replace these with valid auth headers from your payumoney merchant account
     static payumoney_url = Settings.payumoney_live ? "https://www.payumoney.com" : "https://test.payumoney.com";

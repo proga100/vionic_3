@@ -1,33 +1,63 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController,Nav, Platform } from 'ionic-angular';
+import {IonicPage, Platform, LoadingController,AlertController,Nav,NavController, Events} from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
+import { WooCommerceProvider } from "../providers/woocommerce/woocommerce";
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import * as WC from 'woocommerce-api';
 import { VendorsPage } from '../pages/vendors/vendors';
 import { HomePage } from '../pages/home/home';
+import { CatagoryPage } from '../pages/catagory/catagory';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage} from '../pages/signup/signup';
+import { AccountPage} from '../pages/account/account';
+import { Cart } from '../pages/cart/cart';
+import { Checkout } from '../pages/checkout/checkout';
 //import { Settings } from "settings";
-
+import { CacheService } from "ionic-cache";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-   WooCommerce: any;
+  private wooCommerce: any;
   categories: any[];
-
+  private loading: any;
   rootPage: any = HomePage;
-
+  loggedIn: boolean;
+  user: any;
+  @ViewChild('content') childNavCtrl: NavController;
   pages: Array<{title: string, component: any,  image: string}>;
 
   constructor(
   public platform: Platform, 
+  public cache: CacheService,
   public statusBar: StatusBar, 
   public splashScreen: SplashScreen,
+ public storage: Storage,
               public push: Push,
-              public alertCtrl: AlertController) {
-				  
+              public alertCtrl: AlertController,
+              private wooProvider: WooCommerceProvider,
+              public loadingCtrl: LoadingController,
+              private events: Events
+              ) {
+                this.user = {};
+		 //Create loading
+     this.loading = this.loadingCtrl.create();
+    
+     this.events.subscribe("user:loggedIn", () => {
+      this.ionViewDidEnter();	
+    
+    //  this.ionViewDidEnter();
+    });	  
     this.initializeApp();
+    this.wooCommerce = wooProvider.WooCommerce;
+    //Load more products
+    if (this.wooCommerce) {
+     this.LoadMenuCats();
+   }
+
+  
 
   }
 
@@ -35,53 +65,47 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+       // Set TTL to 12h
+       this.cache.setDefaultTTL(60 * 60 * 12);
+ 
+       // Keep our cached results when device is offline!
+       this.cache.setOfflineInvalidate(false);
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     this.initPushNotification();
-    this.categories = [];
-    this.WooCommerce = WC({
-     url: 'http://localhost/virtuemart/v3212',
-   // url: 'https://www.cisupplystore.com/newvm',
-     consumerKey: 'sdgfsdg',
-     consumerSecret: 'erherht'
-   });
-/*
- 
-     this.WooCommerce.getmeAsync("type=categories&category_id=0").then((data) => {
-
-
-     let temp: any[] = JSON.parse(data.body).data[0]['children'];
-
-     for( let i = 0; i < temp.length; i ++){
-    
-         this.categories.push(temp[i]);
-     
-   
-        this.categories[this.categories.length - 1].subCategories = [];
-         for (var j = 0; j < temp.length; j++) {
-
-           if(temp[i].id == temp[j].parent){
-             this.categories[this.categories.length - 1].subCategories.push(temp[j]);
-           }
-           
-         }
-
-       
-     }
-
-   }, (err)=> {
-     console.log(err);
-   })
-
-*/
-
+  
     });
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+   // this.nav.setRoot(page.component);
+    	
+  //	console.log('subcategory:',catagory);
+
+  if (page=='Cart'){
+    this.nav.push(Checkout);
+    return;
+
+  }
+  if (page =='login'){
+  //  this.nav.setRoot(Login.component);
+
+  this.nav.push(LoginPage, { next: this.childNavCtrl });
+ 
+ 
+
+  }else if(page =='signup'){
+    this.nav.push(SignupPage)
+    }else if (page=='account'){
+      this.nav.push(AccountPage)
+
+    }else{
+      this.nav.push(CatagoryPage,page );
+
+    }
+   
   }
   
    initPushNotification() {
@@ -173,6 +197,60 @@ export class MyApp {
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }
 
+LoadMenuCats(){
+  this.categories = [];
+        this.wooCommerce.getmeAsync("type=categories&category_id=0").then((data) => {
 
+
+     let temp: any[] = JSON.parse(data.body).data[0]['children'];
+
+     for( let i = 0; i < temp.length; i ++){
+    
+         this.categories.push(temp[i]);
+     
+   
+        this.categories[this.categories.length - 1].subCategories = [];
+         for (var j = 0; j < temp.length; j++) {
+
+           if(temp[i].id == temp[j].parent){
+             this.categories[this.categories.length - 1].subCategories.push(temp[j]);
+           }
+           
+         }
+
+       
+     }
+
+   }, (err)=> {
+     console.log(err);
+   })
+
+
+}
+
+ionViewDidEnter() {
+  console.log('ssslogi');
+  this.storage.ready().then( () => {
+
+    this.storage.get("userLoginInfo").then( (userLoginInfo) => {
+      console.log('login',userLoginInfo);
+      if(userLoginInfo != null){
+
+        console.log("User logged in...");
+        this.user = userLoginInfo;
+        console.log('userinfo',this.user);
+        this.loggedIn = true;
+      }
+      else {
+        console.log("No user found.");
+        this.user = {};
+        this.loggedIn = false;
+      }
+
+    })
+  })
+
+
+}
 
 }

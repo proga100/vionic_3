@@ -1,0 +1,57 @@
+page-account {
+    .address_details p {
+        font-size: 11px !important;
+        line-height: 6px !important;
+    }
+
+    .header-image {
+        
+        ion-card {
+
+            position: relative;
+            text-align: center;
+            // max-height: 25% !important;
+            // min-height: 25% !important;
+            height: 30vh;
+            margin: 0 !important;
+            width: 100% !important;
+        }
+
+        ion-card .card-background {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            -webkit-transform: translateY(-50%) translateX(-50%);
+        }
+
+        .card-title {
+            position: absolute;
+            top: 30%;
+            font-size: 3.0em;
+            width: 100%;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .card-subtitle {
+            font-size: 1.5em;
+            position: absolute;
+            top: 60%;
+            width: 100%;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .avatar {
+            position: absolute;
+            left: calc(0% + 48px);
+            top: calc(100% - 48px);
+            transform: translateY(-50%) translateX(-50%);
+            -webkit-transform: translateY(-50%) translateX(-50%);
+            width: 64px;
+            height: 64px;
+            border-radius: 4px;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
 /**
  * Generated class for the QuantityComponent component.
  *

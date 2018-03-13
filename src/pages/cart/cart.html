@@ -1,0 +1,73 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Your Cart</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" (click)="closeModal()" icon-only>
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-divider color="danger">
+      Your Cart Description
+    </ion-item-divider>
+    <ion-item-divider color="light" [hidden]="!showEmptyCartMessage">
+      <small>There are no products in your cart.</small>
+    </ion-item-divider>
+
+    <ion-card color="light" *ngFor="let item of cartItems; let i = index">
+      <ion-item color="light" >
+
+        <ion-thumbnail item-right>
+          <img [src]="item.product.main_image" />
+        </ion-thumbnail>
+        <h2>{{ item.product.product_name }}</h2>
+        <p *ngIf="item.variation"><span *ngFor="let att of item.variation.attributes">{{ att.option | titlecase }} &nbsp;</span></p>
+        <h3 *ngIf="!item.variation"> {{ currency_symbol }} {{ item.product.reg_price | number: '1.2-2' }}  </h3>
+        <h3 *ngIf="item.variation"><span>{{ currency_symbol }} {{ item.variation.regular_price | number: '1.2-2'}}</span>
+          <span *ngIf="item.product.sale_price">{{ (item.variation.regular_price - item.variation.sale_price)/item.variation.regular_price * 100  | number:'1.2-2'}} % OFF</span
+            ></h3>
+      </ion-item>
+      <ion-item class="compact">
+        <ion-row no-padding>
+          <ion-col col-8 no-padding>
+            <button clear color="danger" ion-button icon-only (click)="changeQty(item, i, -1)">
+              <ion-icon name="remove-circle"></ion-icon>
+            </button>
+            <button ion-button color="dark" clear>{{ item.qty }}</button>
+            <button clear color="danger" ion-button icon-only (click)="changeQty(item, i, 1)">
+              <ion-icon name="add-circle"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4 style="text-align: right;">
+            <button ion-button small outline (click)="removeFromCart(item, i)" style="width: 64px;" color="danger">Remove</button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="light">
+
+    <ion-row no-padding >
+      <ion-col no-padding>
+        <button ion-button color="danger" block clear>TOTAL {{ currency_symbol }} {{ total | number: '1.2-2'}}</button>
+      </ion-col>
+      <ion-col no-padding>
+        <button ion-button color="danger" block outline (click)="checkout()">Checkout</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-footer>

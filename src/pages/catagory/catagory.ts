@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ModalController, AlertController ,NavController, NavParams } from 'ionic-angular';
-import * as WC from 'woocommerce-api';
-import { LoadingController } from 'ionic-angular';
+import { ModalController, AlertController ,NavController, NavParams, LoadingController } from 'ionic-angular';
+import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 import { ProductdetailsPage } from '../../pages/productdetails/productdetails';
 import { HoldComponent } from '../../components/hold/hold';
 import { CatagorylistPage } from '../../pages/catagorylist/catagorylist';
@@ -21,7 +20,7 @@ import { FillterComponent } from '../../components/fillter/fillter';
   templateUrl: 'catagory.html',
 })
 export class CatagoryPage {
-	 WooCommerce: any;
+  private wooCommerce: any;
   testRadioOpen: boolean;
   testRadioResult;
   catagory:any[];
@@ -29,52 +28,70 @@ export class CatagoryPage {
   products: any[];
   pr: any[];
   par: any;
+  private loading: any;
 
 
- constructor(public navCtrl: NavController,public loading: LoadingController,public navParams: NavParams, public alertCtrl: AlertController,public modalCtrl: ModalController) {
+ constructor(public navCtrl: NavController,public loadingCtrl: LoadingController, private wooProvider: WooCommerceProvider,public navParams: NavParams, public alertCtrl: AlertController,public modalCtrl: ModalController) {
  this.catagory = navParams.data;
- 	this.subcategory = this.catagory['children'];
+   this.subcategory = this.catagory['children'];
+   //Create loading
+   this.loading = this.loadingCtrl.create();
 	
-	 this.WooCommerce = WC({
-      url: 'https://www.cisupplystore.com/newvm',
-      consumerKey: 'sdgfsdg',
-      consumerSecret: 'erherht'
-    });
-	/*
-	this.WooCommerce.getmeAsync("type=products_by_category&category_id="+this.subcategory['virtuemartCategoryId']).then((data) => {
-	this.par = JSON.parse(data.body);
-	//console.log(this.par.data);
-	this.products = this.par.data[0];
-	 console.log( this.products);
+   this.wooCommerce = wooProvider.WooCommerce;
 	
-    }).catch((err) => {
-      alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
-    })
+   
+   //Load more products
+   if (this.wooCommerce) {
+    this.LoadSubCats();
+  }
 	
-	*/
-	
-	  let loader = this.loading.create({
-    content: 'Getting latest entries...',
-  });
-  
-
-	   loader.present().then(() => {
-   this.WooCommerce.getmeAsync("type=products_by_category&category_id="+this.subcategory['virtuemartCategoryId']).then((data) => {
-	this.par = JSON.parse(data.body);
-	//console.log(this.par.data);
-	this.products = this.par.data[0];
-	 console.log( this.products);
-	
-    }).catch((err) => {
-      alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
-    })
-	
-    loader.dismiss();
-  });
-	
+		
 
   }
+ LoadSubCats(){
+  this.loading.present();
+  this.wooCommerce.getmeAsync("type=products_by_category&category_id="+this.catagory['virtuemartCategoryId']).then((data) => {
+    //Show Loading
+
+    this.loading.dismiss();
+   this.par = JSON.parse(data.body);
+  
+   this.products = this.par.data[0];
+   // console.log( this.products);
+   
+     }).catch((err) => {
+      this.loading.dismiss();
+       alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
+     })
+   
+  
+
+
+
+ }
+
+ onSegmentChanged($event){
+  this.loading = this.loadingCtrl.create();
+
+this.loading.present();
+this.wooCommerce.getmeAsync("type=products_by_category&category_id="+$event._value).then((data) => {
+  //Show Loading
+//Create loading
+
+  this.loading.dismiss();
+ this.par = JSON.parse(data.body);
+
+ this.products = this.par.data[0];
+ // console.log( this.products);
  
+   }).catch((err) => {
+    this.loading.dismiss();
+     alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
+   })
+ 
+
+
+ }
 
   
 
@@ -83,11 +100,10 @@ export class CatagoryPage {
 
   
 	
-    console.log('ionViewDidLoad CatagoryPage');
+   // console.log('ionViewDidLoad CatagoryPage');
   }
-      ProductDeatail(){
-      this.navCtrl.push(ProductdetailsPage);
-  }
+
+
      hold() {
      let modal = this.modalCtrl.create(HoldComponent);
       modal.present(); 
@@ -96,6 +112,17 @@ export class CatagoryPage {
     CatagoryList(){
      this.navCtrl.push(CatagorylistPage);
   }
+
+  Prod(prod_id){
+  
+   this.navCtrl.push(ProductdetailsPage,
+  {
+prod_id: prod_id
+
+  }
+  );
+   
+ }
     sort() {
     let modal = this.modalCtrl.create(SortComponent);
     modal.present();

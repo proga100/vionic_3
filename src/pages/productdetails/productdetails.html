@@ -1,102 +1,38 @@
 <ion-header>
    <ion-navbar>
-      <ion-title>Shirts</ion-title>
+      <ion-title>{{product.product_name}}</ion-title>
    </ion-navbar>
 </ion-header>
 <ion-content>
    <ion-slides class="productdetails_slider"  pager>
       <ion-slide >
-         <img src="assets/img/shirt2.png" class="slide-image"/>
+         <img [src]="product.main_image"   class="slide-image"/>
       </ion-slide>
-      <ion-slide>
-         <img src="assets/img/shirt1.png" class="slide-image"/>
-      </ion-slide>
-      <ion-slide>
-         <img src="assets/img/shirt2.png" class="slide-image"/>
-      </ion-slide>
+    
    </ion-slides>
-   <ion-row class="thambnail">
-      <ion-col col-2 >
-         <img src="assets/img/shirt1.png">
-      </ion-col>
-      <ion-col col-2>
-         <img src="assets/img/shirt2.png">
-      </ion-col>
-      <ion-col col-2>
-         <img src="assets/img/shirt1.png">
-      </ion-col>
-      <ion-col col-2>
-         <img src="assets/img/shirt2.png">
-      </ion-col>
-      <ion-col col-2 (click)="thambnail()">
-         <img src="assets/img/shirt1.png">
-      </ion-col>
-      <ion-col col-2>
-         <img src="assets/img/shirt1.png">
-      </ion-col>
-   </ion-row>
+
    <ion-list>
-      <p class="productname">ALASKAN GUIDE SHIRT</p>
-      <p class="productno">NO. 11012006(#12006)</p>
-      <p class="productprice">$ 125.00</p>
-      <p class="description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <p class="productname">{{product.product_name}}</p>
+      <p class="productno">NO. {{product.product_sku}}</p>
+      <p class="productprice">$ {{ product.reg_price}}</p>
+      <p class="description">{{product.product_s_desc}}</p>
       <p class="readmore" (click)="readMore()">
-      <button ion-button color="light">Read More</button>
-      </p>
+          <button ion-button color="light">Read More</button>
+          </p>
    </ion-list>
+
    <ion-row class="productsize">
-      <ion-col col-6 class="size" (click)="size()">
-         SIZE  
-         <ion-icon name="md-arrow-dropdown"></ion-icon>
-      </ion-col>
-      <ion-col col-6 class="qty" (click)="quantity()">
+    
+      <ion-col col-12 class="qty" (click)="quantity()">
          QTY 
          <ion-icon name="md-arrow-dropdown"></ion-icon>
       </ion-col>
    </ion-row>
-   <ion-list>
-      <p class="relateditems">RELETED ITEMS</p>
-      <ion-scroll scrollX class="feedviewscroll">
-         <div class="scroll-item activitylist ">
-            <p ><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-      </ion-scroll>
-   </ion-list>
-   <ion-list>
-      <p class="relateditems">YOU MAY ALSO LIKE</p>
-      <ion-scroll scrollX class="feedviewscroll">
-         <div class="scroll-item activitylist ">
-            <p ><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-         <div class="scroll-item activitylist ">
-            <p><img src="assets/img/shirt1.png"></p>
-         </div>
-      </ion-scroll>
-   </ion-list>
+  
+
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-title>ADD TO CART</ion-title>
+    <ion-title (click)="addToCart()">ADD TO CART</ion-title>
   </ion-toolbar>
 </ion-footer>

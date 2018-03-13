@@ -1,4 +1,20 @@
 <ion-header #head>
+        <ion-slides pager>
+                <ion-slide>
+                 
+                   <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
+                   <ion-title class="collection">Welding Supply</ion-title>
+                </ion-slide>
+                <ion-slide>
+                   <img src="https://www.cisupplystore.com/newvm/images/heater.jpeg" class="slide-banner">
+                    <ion-title class="collection">Heater</ion-title>
+                </ion-slide>
+                <ion-slide>
+                   <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
+                    <ion-title class="collection">Welding Supply</ion-title>
+                </ion-slide>
+                     
+             </ion-slides>
     <ion-navbar color="danger">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -49,22 +65,7 @@ CENTRAL INDUSTRIAL SUPPLY</span>
          </button>
       </ion-buttons>
    </ion-navbar>
-   <ion-slides pager>
-      <ion-slide>
-	   
-         <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
-         <ion-title class="collection">Weldin Supply</ion-title>
-      </ion-slide>
-      <ion-slide>
-         <img src="https://www.cisupplystore.com/newvm/images/heater.jpeg" class="slide-banner">
-          <ion-title class="collection">Heater</ion-title>
-      </ion-slide>
-      <ion-slide>
-         <img src="https://www.cisupplystore.com/newvm/images/stories/virtuemart/product/welding-supply.jpeg" class="slide-banner">
-          <ion-title class="collection">Welding Supply</ion-title>
-      </ion-slide>
-           
-   </ion-slides>
+   
 </ion-header>
 <ion-content>
 
@@ -76,7 +77,7 @@ CENTRAL INDUSTRIAL SUPPLY</span>
           <p>{{ category.categoryName }}  </p>
          </ion-list>
          
-        <!-- <img [src]="category.main_image" /> !-->
+        <img [src]="category.main_image" /> 
 	 </ion-col> 
 	 
 	 </ion-row >

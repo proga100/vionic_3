@@ -7,34 +7,54 @@
          <ion-col col-6 class="profileimage">
       
       <img src="./assets/img/cis.png" />
-     <!-- <div class="card-title">CENTRAL INDUSTRIAL SUPPLY</div>
-      <div class="card-subtitle">Keep Shopping</div>
-	  
-	  !-->
+    
 
          </ion-col>
       </ion-row>
     
       <ion-list class="listheader">
-	  
+        <ion-item-divider color="danger">Categories</ion-item-divider>
          <button class="listbutton" menuClose ion-item  (click)="openPage('HomePage')">
          <span class="activemenu"></span>
 		 <img src="assets/img/home_icon.png"> 
 		 <span class="titlesidemenu">Home</span>
          </button>
-
- <!--
-         <button class="listbutton" menuClose ion-item *ngFor="let p of categories" (click)="openPage(p)">
-         <span></span>
-        
-         <img src="{{ p.main_image }}">
+     
        
-         
-         <span class="titlesidemenu">{{p.categoryName}}</span>
-         </button>
+          
 
-           !-->
-           
+ 
+    
+
+         <ion-item  menuClose  *ngFor="let p of categories" (click)="openPage(p)">
+          <ion-icon item-left large> <span class="listbutton">  <img src="{{ p.main_image }}" /></span></ion-icon>  
+        
+       
+         <h2>{{p.categoryName}}</h2>
+         
+       
+         </ion-item>
+      <ion-item-divider color="danger">Account</ion-item-divider>
+
+      <ion-item (click)="openPage('signup')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="md-clipboard" item-left large></ion-icon>
+        <h2>Sign Up</h2>
+        <p>For a new account</p>
+      </ion-item>
+
+      <ion-item (click)="openPage('login')" menuClose *ngIf="!loggedIn">
+        <ion-icon name="log-in" item-left large></ion-icon>
+        <h2>Login</h2>
+        <p>Using username and password</p>
+      </ion-item>
+
+      <ion-item *ngIf="loggedIn"  (click)="openPage('account')" menuClose>
+        <ion-icon name="contact" item-left large></ion-icon>
+      <!--  <h2>{{ (this.user.firstname == '' ? this.user.username : this.user.firstname) || "" }}</h2> !-->
+        <p>Your Account</p>
+      </ion-item>
+          
+
       </ion-list>
    </ion-content>
 </ion-menu>

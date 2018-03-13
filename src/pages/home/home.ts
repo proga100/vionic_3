@@ -1,8 +1,5 @@
-//import { Component } from '@angular/core';
-//import { NavController } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Slides, ToastController, ModalController, Events, Platform } from 'ionic-angular';
-//import { LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, Slides, ToastController, ModalController, Events, Platform, LoadingController} from 'ionic-angular';
 import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 import { CatagoryPage } from '../../pages/catagory/catagory';
 import { CatagorylistPage } from '../../pages/catagorylist/catagorylist';
@@ -23,10 +20,16 @@ export class HomePage {
   mainCategories: any[];
   page: number;
   images: string[] = [];
+  private loading: any;
   
 
   
-  constructor(public navCtrl: NavController,private wooProvider: WooCommerceProvider) {
+  constructor(public navCtrl: NavController,
+    private wooProvider: WooCommerceProvider,
+    public loadingCtrl: LoadingController
+  ) {
+    //Create loading
+    this.loading = this.loadingCtrl.create();
 	
     this.wooCommerce = wooProvider.WooCommerce;
        //Load more products
@@ -46,6 +49,8 @@ export class HomePage {
      this.navCtrl.push(CatagorylistPage);
   }
   loadCats() {
+      //Show Loading
+      this.loading.present();
     this.categories = [];
 	   
 	
@@ -53,7 +58,8 @@ export class HomePage {
 	
  	
     this.wooCommerce.getmeAsync("type=categories&category_id=0").then((data) => {
-
+           //Hide loading
+           this.loading.dismiss();
     let temp: any[] = JSON.parse(data.body).data[0]['children'];
 
     for( let i = 0; i < temp.length; i ++){
@@ -63,10 +69,12 @@ export class HomePage {
     }
 
   }, (err)=> {
+       //Hide loading
+       this.loading.dismiss();
     console.log(err);
   })
   
-console.log('fer', this.categories);  
+console.log('categories', this.categories);  
 
 
   

@@ -162,10 +162,11 @@ page-catagory {
       color: #716d62;
   }
 
-  .recommendation ion-col[col-6] img {
-    width: 100%;
-    margin: 12% auto;
 
+   .recommendation ion-col[col-6] img {
+    max-width: 200px ;
+    margin: 10% auto;
+    height: 200px ;
   }
 
   .recommendation ion-col[col-6] b
