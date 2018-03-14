@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicPageModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
@@ -17,7 +18,6 @@ import { ReadmorePage } from '../pages/readmore/readmore';
 import { VendorsPage } from '../pages/vendors/vendors';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
-
 import { AccountPage} from '../pages/account/account';
 import { Cart } from '../pages/cart/cart';
 import { Checkout } from '../pages/checkout/checkout';
@@ -63,7 +63,15 @@ import { CacheModule } from 'ionic-cache';
     IonicImageLoader.forRoot(),
     CacheModule.forRoot(),
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    IonicPageModule.forChild(LoginPage),
+    IonicPageModule.forChild(AccountPage),
+    IonicPageModule.forChild(Checkout)
+  ],
+    exports: [
+      AccountPage,
+   LoginPage,
+   Checkout
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,7 +94,7 @@ import { CacheModule } from 'ionic-cache';
   LoginPage,
   AccountPage,
   Cart,
-  Checkout
+ Checkout
   ],
   providers: [
     StatusBar,

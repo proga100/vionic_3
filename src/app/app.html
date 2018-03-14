@@ -19,12 +19,8 @@
 		 <img src="assets/img/home_icon.png"> 
 		 <span class="titlesidemenu">Home</span>
          </button>
-     
-       
-          
 
- 
-    
+    <!--     <ion-item   (click)="openPage('cart')">   cart  </ion-item> !-->
 
          <ion-item  menuClose  *ngFor="let p of categories" (click)="openPage(p)">
           <ion-icon item-left large> <span class="listbutton">  <img src="{{ p.main_image }}" /></span></ion-icon>  

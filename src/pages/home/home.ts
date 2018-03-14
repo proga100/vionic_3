@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, Slides, ToastController, ModalController, Events, Platform, LoadingController} from 'ionic-angular';
+import { Component } from '@angular/core';
+import {  NavController, Slides, ToastController, ModalController,  LoadingController} from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 import { CatagoryPage } from '../../pages/catagory/catagory';
 import { CatagorylistPage } from '../../pages/catagorylist/catagorylist';
@@ -26,6 +27,7 @@ export class HomePage {
   
   constructor(public navCtrl: NavController,
     private wooProvider: WooCommerceProvider,
+    public storage: Storage,
     public loadingCtrl: LoadingController
   ) {
     //Create loading
@@ -51,12 +53,10 @@ export class HomePage {
   loadCats() {
       //Show Loading
       this.loading.present();
+     
     this.categories = [];
 	   
-	
-
-	
- 	
+	 
     this.wooCommerce.getmeAsync("type=categories&category_id=0").then((data) => {
            //Hide loading
            this.loading.dismiss();
@@ -73,6 +73,7 @@ export class HomePage {
        this.loading.dismiss();
     console.log(err);
   })
+
   
 console.log('categories', this.categories);  
 

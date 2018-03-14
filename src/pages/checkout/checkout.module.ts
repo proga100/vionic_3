@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { Checkout } from './checkout';
+ // import { IonicPageModule } from 'ionic-angular';
+// import { Checkout } from './checkout';
 
 @NgModule({
   declarations: [
-    Checkout,
+    // Checkout,
   ],
   imports: [
-    IonicPageModule.forChild(Checkout),
+   // IonicPageModule.forChild(Checkout),
   ],
   exports: [
-    Checkout
+    // Checkout
   ]
 })
 export class CheckoutPageModule {}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
 import { Http, Headers } from "@angular/http";
 import { Storage } from '@ionic/storage';
-// import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
+ import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 // import { HomePage } from '../home/home';
 // import { Menu } from '../menu/menu';
 // import { OrderPlacedPage } from '../order-placed/order-placed';
@@ -17,7 +17,7 @@ declare var RazorpayCheckout: any;
   templateUrl: 'checkout.html',
 })
 export class Checkout {
- // private wooCommerce: any;
+  private wooCommerce: any;
   WooCommerce: any;
   newOrder: any;
   paymentMethods: any[];
@@ -30,12 +30,13 @@ export class Checkout {
   billing_state: any;
   shipping_state: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController,
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, 
+    public alertCtrl: AlertController,
    //  public payPal: PayPal,
       private loadingController: LoadingController, 
   //    public iab: InAppBrowser, 
       private http: Http,
-   //   private wooProvider: WooCommerceProvider,
+      private wooProvider: WooCommerceProvider,
        public toastCtrl: ToastController )
         {
           this.countries();    
@@ -75,7 +76,7 @@ export class Checkout {
 */
 
 
-  //  this.wooCommerce = wooProvider.WooCommerce;
+    this.wooCommerce = wooProvider.WooCommerce;
 
     this.storage.get("userLoginInfo").then((userLoginInfo) => {
    
@@ -295,7 +296,7 @@ setBillingState(country_id){
 
       billing: this.newOrder.billing,
       shipping: this.newOrder.shipping,
-      customer_id: this.userInfo.id || '',
+    //  customer_id: this.userInfo.id || '',
       line_items: orderItems
     };
 
@@ -435,7 +436,7 @@ setBillingState(country_id){
 
           orderData.order = data;
 
-          this.WooCommerce.postAsync('orders', orderData).then((data) => {
+          this.wooCommerce.postAsync('type=orders', orderData).then((data) => {
             alert("Order placed successfully!");
 
             let response = (JSON.parse(data.body).order);
@@ -521,10 +522,10 @@ setBillingState(country_id){
         orderData.order = data;
         console.log(orderData)
 
-        this.WooCommerce.postAsync("orders", orderData.order).then((data) => {
+        this.wooCommerce.postAsync("type=orders", orderData.order).then((data) => {
 
           let response = (JSON.parse(data.body));
-         // console.log(response)
+          console.log(response)
           // this.alertCtrl.create({
           //   title: "Order Placed Successfully",
           //   message: "Your order has been placed successfully. Your order number is " + response.order_number,

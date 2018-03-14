@@ -5,13 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { WooCommerceProvider } from "../providers/woocommerce/woocommerce";
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { VendorsPage } from '../pages/vendors/vendors';
+// import { VendorsPage } from '../pages/vendors/vendors';
 import { HomePage } from '../pages/home/home';
 import { CatagoryPage } from '../pages/catagory/catagory';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage} from '../pages/signup/signup';
 import { AccountPage} from '../pages/account/account';
-import { Cart } from '../pages/cart/cart';
+ import { Cart } from '../pages/cart/cart';
 import { Checkout } from '../pages/checkout/checkout';
 //import { Settings } from "settings";
 import { CacheService } from "ionic-cache";
@@ -44,7 +44,7 @@ export class MyApp {
                 this.user = {};
 		 //Create loading
      this.loading = this.loadingCtrl.create();
-    
+    // this.ionViewDidEnter();	
      this.events.subscribe("user:loggedIn", () => {
       this.ionViewDidEnter();	
     
@@ -84,7 +84,7 @@ export class MyApp {
     	
   //	console.log('subcategory:',catagory);
 
-  if (page=='Cart'){
+  if (page=='cart'){
     this.nav.push(Checkout);
     return;
 
@@ -220,6 +220,13 @@ LoadMenuCats(){
 
        
      }
+    
+     this.storage.set("categories", this.categories).then((data) => {
+          
+    
+    })
+
+
 
    }, (err)=> {
      console.log(err);

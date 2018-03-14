@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { AccountPage } from './account';
+// import { IonicPageModule } from 'ionic-angular';
+// import { AccountPage } from './account';
 
 
 @NgModule({
   declarations: [
-    AccountPage,
+   // AccountPage,
   ],
   imports: [
-    IonicPageModule.forChild(AccountPage),
+    // IonicPageModule.forChild(AccountPage),
   //  ParallexDirectiveModule,
   //  HideHeaderDirectiveModule
   ],
   exports: [
-    AccountPage
+    // AccountPage
   ]
 })
 export class AccountPageModule {}
