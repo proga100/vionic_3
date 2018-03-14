@@ -59,6 +59,14 @@
       "ionic-plugin-keyboard": {},
       "phonegap-plugin-push": {
         "FCM_VERSION": "11.6.2"
+      },
+      "cordova-plugin-ionic": {
+        "APP_ID": "ba2dc52f",
+        "CHANNEL_NAME": "Master",
+        "UPDATE_METHOD": "background",
+        "WARN_DEBUG": "true",
+        "UPDATE_API": "https://api.ionicjs.com",
+        "MAX_STORE": "2"
       }
     },
     "platforms": []
