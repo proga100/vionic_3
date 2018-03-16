@@ -42,8 +42,7 @@
     "phonegap-plugin-push": "^2.2.1",
     "rxjs": "^5.4.3",
     "sw-toolbox": "3.6.0",
-    "woocommerce-api": "^1.4.2",
-    "zone.js": "^0.8.17"
+     "zone.js": "^0.8.17"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.8",
