@@ -26,6 +26,7 @@
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "^2.0.1",
+    "sshpk": "^1.7.0",
     "cordova-android": "~7.1.0",
     "cordova-plugin-console": "^1.0.5",
     "cordova-plugin-device": "^1.1.4",
@@ -41,7 +42,6 @@
     "phonegap-plugin-push": "^2.2.1",
     "rxjs": "^5.4.3",
     "sw-toolbox": "3.6.0",
-    "sshpk": "^1.7.0",
     "woocommerce-api": "^1.4.2",
     "zone.js": "^0.8.17"
   },
