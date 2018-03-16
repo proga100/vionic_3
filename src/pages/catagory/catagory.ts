@@ -25,32 +25,40 @@ export class CatagoryPage {
   testRadioResult;
   catagory:any[];
   subcategory:any[];
+  category: any;
+  categories: any[];
+  subcs:any[]; 
   products: any[];
   pr: any[];
   par: any;
   private loading: any;
+  private loading_1: any;
+
 
 
  constructor(public navCtrl: NavController,public loadingCtrl: LoadingController, private wooProvider: WooCommerceProvider,public navParams: NavParams, public alertCtrl: AlertController,public modalCtrl: ModalController) {
  this.catagory = navParams.data;
    this.subcategory = this.catagory['children'];
+
+   console.log(this.subcategory);
    //Create loading
    this.loading = this.loadingCtrl.create();
+  
 	
    this.wooCommerce = wooProvider.WooCommerce;
 	
    
    //Load more products
    if (this.wooCommerce) {
-    this.LoadSubCats();
+    this.LoadSubCats(this.catagory['virtuemartCategoryId']);
   }
 	
 		
 
   }
- LoadSubCats(){
+ LoadSubCats(cat_id){
   this.loading.present();
-  this.wooCommerce.getmeAsync("type=products_by_category&category_id="+this.catagory['virtuemartCategoryId']).then((data) => {
+  this.wooCommerce.getmeAsync("type=products_by_category&category_id="+cat_id).then((data) => {
     //Show Loading
 
     this.loading.dismiss();
@@ -70,25 +78,41 @@ export class CatagoryPage {
 
  }
 
- onSegmentChanged($event){
+
+ subcatsme(sub_catid){
   this.loading = this.loadingCtrl.create();
+  
+  this.loading.present();
 
-this.loading.present();
-this.wooCommerce.getmeAsync("type=products_by_category&category_id="+$event._value).then((data) => {
-  //Show Loading
-//Create loading
-
-  this.loading.dismiss();
- this.par = JSON.parse(data.body);
-
- this.products = this.par.data[0];
- // console.log( this.products);
+ this.LoadSubCats(sub_catid);
+  this.subcs = [];
  
-   }).catch((err) => {
-    this.loading.dismiss();
-     alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
-   })
  
+	 
+  this.wooCommerce.getmeAsync("type=categories&category_id="+sub_catid).then((data) => {
+         //Hide loading
+         this.loading.dismiss();
+  let temp: any[] = JSON.parse(data.body).data[0]['children'];
+
+  for( let i = 0; i < temp.length; i ++){
+
+    this.subcs.push(temp[i]);
+    
+  }
+console.log('sub',this.subcs);
+}, (err)=> {
+     //Hide loading
+     this.loading_1.dismiss();
+  console.log(err);
+})
+ 
+
+ }
+
+ 
+ onSegmentChanged($event){
+
+ this.subcatsme($event._value); // subcategories names
 
 
  }

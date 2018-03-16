@@ -32,18 +32,11 @@
    </ion-slides>
     <ion-scroll scrollX class="feedviewscroll">
         <ion-segment [(ngModel)]="sgm" (ionChange)="onSegmentChanged($event)">  
-			
-         
 		
                     <ion-segment-button value="{{subcateg.virtuemartCategoryId}}" *ngFor="let subcateg of subcategory">
                         {{subcateg.categoryName}}
                     </ion-segment-button>
-                   
-                  
-                  
-         
-
-              </ion-segment> 
+                  </ion-segment> 
                 </ion-scroll>
              
                    
@@ -55,26 +48,35 @@
     <div [ngSwitch]="sgm">
       <div *ngFor="let subcats of subcategory">
           <ng-container *ngSwitchCase=subcats.virtuemartCategoryId >
-             
+           
               </ng-container>
       </div>
       </div>
+
+    
+
+          <ion-list class="recommendation sort_filter">
+              
+            <ion-row>
+               <ion-col col-8 class="category" (click)="subcatsme(subcateg.virtuemartCategoryId)"  *ngFor="let subcateg of subcs; let i = index">
+                    <p class="name"><img [src]="subcateg.main_image" /></p>
+                    <p class="name"> {{subcateg.categoryName}}</p>
+               </ion-col>
+                 
+            </ion-row>
+         </ion-list>
     
    <ion-list class="recommendation sort_filter">
-          
+         
           <!--  <ion-row (click)="hold()"> !-->
                 <ion-row>
          <ion-col col-6 (click)="Prod(product.virtuemart_product_id)" *ngFor="let product of products; let i = index">
        <!--   <span class="offers">4% OFF</span> -->
-            <img [src]="product.main_image" />
-            <p class="name">{{ product.product_name }}</p>
+       <p class="name"><img [src]="product.main_image" /></p>
+            <p class="name" [innerHTML]=product.product_name></p>
             <p class="number">NO:{{ product.product_sku }}</p>
             <p>${{ product.reg_price}}</p>
          </ion-col>
-            
-            
-           
-           
            
       </ion-row>
    </ion-list>

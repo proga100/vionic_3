@@ -104,7 +104,7 @@ export class Cart {
               this.navCtrl.push(Checkout);
 
             } else {
-              this.navCtrl.push(Checkout, { next: 'Checkout', navCtrl: this.navCtrl })
+              this.navCtrl.push(LoginPage, { next: 'Checkout', navCtrl: this.navCtrl })
             }
 
             this.viewCtrl.dismiss();

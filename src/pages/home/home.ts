@@ -75,7 +75,7 @@ export class HomePage {
   })
 
   
-console.log('categories', this.categories);  
+//console.log('categories', this.categories);  
 
 
   
