@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as WC from 'woocommerce-api';
+import * as WC from 'virtuemart-api';
 
 @Injectable()
 export class WooCommerceProvider {
