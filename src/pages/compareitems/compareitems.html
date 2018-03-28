@@ -2,7 +2,7 @@
    <ion-navbar>
       <ion-title>Compare Items</ion-title>
       <ion-buttons end>
-         <button ion-button icon-only >
+         <button (click)="cart()" ion-button icon-only >
             <ion-icon name="ios-cart-outline"></ion-icon>
          </button>
       </ion-buttons>
@@ -10,76 +10,24 @@
 </ion-header>
 <ion-content>
     <ion-list>
-      <ion-item-sliding class="sliding" >
-         <ion-item>
-            <ion-row (click)="productDetails()">
-               <ion-col col-4>
-                  <ion-avatar item-start>
-                     <img src="assets/img/shirt1.png">
-                  </ion-avatar>
-               </ion-col>
-               <ion-col col-8>
-                  <h4 class="productname">NORTHWEST WOOL SHIRT</h4>
-                  <h6 class="id">#1001708</h6>
-                  <h4 class="productname">$89.00 <span class="offer">$150</span></h4>
-                  <p class="latest">New</p>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-         
-               </ion-col>
-            </ion-row>
-         </ion-item>
-         <ion-item-options side="right">
-            <button ion-button color="primary" class="delete">
-               <ion-icon name="ios-cart-outline"></ion-icon>
-               <span>cartte</span>
-            </button>
-            <button ion-button color="secondary" class="cart">
-               <ion-icon name="ios-trash-outline"></ion-icon>
-               <span>delete</span>
-            </button>
-         </ion-item-options>
-      </ion-item-sliding>
+  
       <ion-item-sliding class="sliding">
-         <ion-item>
+         <ion-item (click)="Prod(product.virtuemart_product_id)" *ngFor="let product of products; let i = index">
             <ion-row>
                <ion-col col-4>
                   <ion-avatar item-start>
-                     <img src="assets/img/shirt2.png">
+                     <img [src]="product.main_image">
                   </ion-avatar>
                </ion-col>
                <ion-col col-8>
-                  <h4 class="productname">NORTHWEST WOOL SHIRT</h4>
-                  <h6 class="id">#1001708</h6>
-                  <h4 class="productname">$89.00 <span class="offer">$150</span></h4>
-                  <p class="latest">New</p>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-      
-               </ion-col>
+                  <h4 class="productname"  [innerHTML]=product.product_name></h4>
+                  <h6 class="id">#{{ product.product_sku }}</h6>
+                  <h4 class="productname">${{ product.reg_price}}</h4>
+            </ion-col>
       
             </ion-row>
          </ion-item>
+         
          <ion-item-options side="right">
             <button ion-button color="primary" class="delete">
                <ion-icon name="ios-cart-outline"></ion-icon>
@@ -91,124 +39,7 @@
             </button>
          </ion-item-options>
       </ion-item-sliding>
-      <ion-item-sliding class="sliding">
-         <ion-item>
-            <ion-row>
-               <ion-col col-4>
-                  <ion-avatar item-start>
-                     <img src="assets/img/shirt2.png">
-                  </ion-avatar>
-               </ion-col>
-               <ion-col col-8>
-                  <h4 class="productname">NORTHWEST WOOL SHIRT</h4>
-                  <h6 class="id">#1001708</h6>
-                  <h4 class="productname">$89.00 <span class="offer">$150</span></h4>
-                  <p class="latest">Sale</p>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-      
-               </ion-col>
-      
-            </ion-row>
-         </ion-item>
-         <ion-item-options side="right">
-            <button ion-button color="primary" class="delete">
-               <ion-icon name="ios-cart-outline"></ion-icon>
-               <span>cartte</span>
-            </button>
-            <button ion-button color="secondary" class="cart">
-               <ion-icon name="ios-trash-outline"></ion-icon>
-               <span>delete</span>
-            </button>
-         </ion-item-options>
-      </ion-item-sliding>  
-            <ion-item-sliding class="sliding">
-         <ion-item>
-            <ion-row>
-               <ion-col col-4>
-                  <ion-avatar item-start>
-                     <img src="assets/img/shirt1.png">
-                  </ion-avatar>
-               </ion-col>
-               <ion-col col-8>
-                  <h4 class="productname">NORTHWEST WOOL SHIRT</h4>
-                  <h6 class="id">#1001708</h6>
-                  <h4 class="productname">$89.00 <span class="offer">$150</span></h4>
-                  <p class="latest">New</p>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-         
-               </ion-col>
-            </ion-row>
-         </ion-item>
-         <ion-item-options side="right">
-            <button ion-button color="primary" class="delete">
-               <ion-icon name="ios-cart-outline"></ion-icon>
-               <span>cartte</span>
-            </button>
-            <button ion-button color="secondary" class="cart">
-               <ion-icon name="ios-trash-outline"></ion-icon>
-               <span>delete</span>
-            </button>
-         </ion-item-options>
-      </ion-item-sliding>
-            <ion-item-sliding class="sliding">
-         <ion-item>
-            <ion-row>
-               <ion-col col-4>
-                  <ion-avatar item-start>
-                     <img src="assets/img/shirt1.png">
-                  </ion-avatar>
-               </ion-col>
-               <ion-col col-8>
-                  <h4 class="productname">NORTHWEST WOOL SHIRT</h4>
-                  <h6 class="id">#1001708</h6>
-                  <h4 class="productname">$89.00 <span class="offer">$150</span></h4>
-                   <p class="latest">New</p>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-                  <ion-col col-2 class="preview">
-                     <img src="assets/img/shirt1.png">
-                  </ion-col>
-         
-               </ion-col>
-            </ion-row>
-         </ion-item>
-         <ion-item-options side="right">
-            <button ion-button color="primary" class="delete">
-               <ion-icon name="ios-cart-outline"></ion-icon>
-               <span>cartte</span>
-            </button>
-            <button ion-button color="secondary" class="cart">
-               <ion-icon name="ios-trash-outline"></ion-icon>
-               <span>delete</span>
-            </button>
-         </ion-item-options>
-      </ion-item-sliding>    
+        
       </ion-list>   
   <!--  <ion-scroll scrollX class="feedviewscroll" direction="xy" zooming="true" min-zoom="1" paging="true">
       <div class="scroll-item activitylist">

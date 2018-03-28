@@ -4,6 +4,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { WooCommerceProvider } from '../providers/woocommerce/woocommerce';
 import { Push } from '@ionic-native/push';
 import { IonicImageLoader } from 'ionic-image-loader';
@@ -21,6 +22,7 @@ import { LoginPage } from '../pages/login/login';
 import { AccountPage} from '../pages/account/account';
 import { Cart } from '../pages/cart/cart';
 import { Checkout } from '../pages/checkout/checkout';
+import { OrderPlacedPage } from '../pages/order-placed/order-placed';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -55,13 +57,15 @@ import { CacheModule } from 'ionic-cache';
   LoginPage,
    AccountPage,
    Cart,
-   Checkout
+   Checkout,
+   OrderPlacedPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicImageLoader.forRoot(),
     CacheModule.forRoot(),
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     HttpModule,
     IonicPageModule.forChild(LoginPage),
@@ -94,7 +98,8 @@ import { CacheModule } from 'ionic-cache';
   LoginPage,
   AccountPage,
   Cart,
- Checkout
+ Checkout,
+ OrderPlacedPage
   ],
   providers: [
     StatusBar,

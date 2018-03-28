@@ -14,6 +14,10 @@ page-catagory {
           width: 100%;
     height: 235px;
 }
+ion-slides {
+   
+    height: 50px;
+}
 .productname
 {
             text-align: center;
@@ -170,7 +174,7 @@ page-catagory {
    .recommendation ion-col[col-6] img {
     max-width: 200px ;
     margin: 10% auto;
-    height: 200px ;
+    max-height: 200px ;
   }
   .recommendation ion-col[col-8] img {
    /*  max-width: 300px ; */
@@ -312,6 +316,11 @@ ion-app._gmaps_cdv_ .nav-decor{
 .custom-checkbox .checkbox-icon:after {
     border-color: #000;
 }
+.subcat_class ion-col img {
+    max-width: 200px;
+    margin: 10% auto;
+    max-height: 200px;
+}
 
 }
 .checkbox-md .checkbox-checked {
@@ -322,3 +331,17 @@ ion-app._gmaps_cdv_ .nav-decor{
 {
       border-color: #000;
 }
+
+.subcat_class ion-col {
+    float: left !important;
+    background: #efefef;
+    padding-bottom: 0px !important;
+    border: solid 1px #f1f3f2;
+    text-align: center;
+    position: relative;
+}
+.subcat_class ion-col {
+    background: #fff !important;
+    margin: 0 auto !important;
+}
+

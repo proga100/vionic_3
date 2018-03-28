@@ -5,7 +5,7 @@ export class Settings {
     // static consumer_secret: string = "cs_de8e6cf03a5afd10491dfb1756415ac5a0169ae8";
 
     static store_url: string = "https://www.cisupplystore.com/newvm";
-   //static store_url: string = "http://localhost/virtuemart/v3212";
+  // static store_url: string = "http://localhost/virtuemart/v3212";
     static consumer_key: string = "ck_ef3bd2f8c132ee1119ac9e605149236e09be7381";
     static consumer_secret: string = "cs_10c9a6be970fe201900cfdd6cd5f7f50826fc373";
 

@@ -33,6 +33,7 @@ export class CatagoryPage {
   par: any;
   private loading: any;
   private loading_1: any;
+  public sortval: any;
 
 
 
@@ -40,7 +41,7 @@ export class CatagoryPage {
  this.catagory = navParams.data;
    this.subcategory = this.catagory['children'];
 
-   console.log(this.subcategory);
+   
    //Create loading
    this.loading = this.loadingCtrl.create();
   
@@ -71,13 +72,26 @@ export class CatagoryPage {
       this.loading.dismiss();
        alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
      })
-   
   
-
-
-
  }
 
+ LoadSubCatsSort(cat_id, sort){
+  this.loading.present();
+  this.wooCommerce.getmeAsync("type=products_by_category&category_id="+cat_id+"&sort="+sort).then((data) => {
+    //Show Loading
+
+    this.loading.dismiss();
+   this.par = JSON.parse(data.body);
+  
+   this.products = this.par.data[0];
+   // console.log( this.products);
+   
+     }).catch((err) => {
+      this.loading.dismiss();
+       alert("There was an error connecting to the server at the moment. We are working on it. Please try again later.")
+     })
+  
+ }
 
  subcatsme(sub_catid){
   this.loading = this.loadingCtrl.create();
@@ -99,7 +113,7 @@ export class CatagoryPage {
     this.subcs.push(temp[i]);
     
   }
-console.log('sub',this.subcs);
+//console.log('sub',this.subcs);
 }, (err)=> {
      //Hide loading
      this.loading_1.dismiss();
@@ -134,7 +148,17 @@ console.log('sub',this.subcs);
      }
 
     CatagoryList(){
-     this.navCtrl.push(CatagorylistPage);
+     // console.log('catagory_subcategory',this.subcategory);
+   //   this.products
+     this.navCtrl.push(
+       CatagorylistPage,
+       {
+      products: this.products,
+      subcategory: this.subcategory,
+      subcs: this.subcs
+       }
+      
+      );
   }
 
   Prod(prod_id){
@@ -149,7 +173,27 @@ prod_id: prod_id
  }
     sort() {
     let modal = this.modalCtrl.create(SortComponent);
-    modal.present();
+
+  
+     modal.present();
+     let qs = modal.onDidDismiss(data => {
+      // Do things with data coming from modal, for instance :
+     
+      this.sortval = data;
+       //Create loading
+       this.loading = this.loadingCtrl.create();
+ 
+       //Load more products
+          if (this.wooCommerce) {
+           this.LoadSubCatsSort(this.catagory['virtuemartCategoryId'], data );
+         }
+
+     
+  return data;
+  });
+
+ 
+     console.log( this.sortval);
   }
     fillter() {
     let modal = this.modalCtrl.create(FillterComponent);

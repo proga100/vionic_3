@@ -172,7 +172,9 @@ border-color: #332f20;
       color: #716d62;
   }
 
-  
+  .recommendation ion-col[col-6] img {
+    width: 65%;
+    margin: 2% auto;
 
    .recommendation ion-col[col-6] img {
     max-width: 200px ;
@@ -358,7 +360,7 @@ ion-app._gmaps_cdv_ .nav-decor{
         text-align: center;
 }
 
-.subcat_class ion-col {
+.subcat_class ion-col[col-6] {
     float: left !important;
     background: #efefef;
     padding-bottom: 0px !important;
@@ -371,7 +373,7 @@ ion-app._gmaps_cdv_ .nav-decor{
     margin: 0 auto !important;
 }
 
-.subcat_class ion-col img {
+.subcat_class ion-col[col-6] img {
     max-width: 200px;
     margin: 10% auto;
     height: 200px;
@@ -387,11 +389,5 @@ opacity: 0.5;
     right: 0;
     width: 100%!important;
     height: 100%;
-}
-ion-list.selected.list.list-md img{
-    max-width: 100%;
-    height: 100%;
-   
-
 }
 }

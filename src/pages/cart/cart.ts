@@ -101,10 +101,11 @@ export class Cart {
             if(data != null){
               
          
-              this.navCtrl.push(Checkout);
+             this.navCtrl.push(Checkout);
+        //  this.navCtrl.push(LoginPage, { next: Checkout, navCtrl: this.navCtrl })
 
             } else {
-              this.navCtrl.push(LoginPage, { next: 'Checkout', navCtrl: this.navCtrl })
+              this.navCtrl.push(LoginPage, { next: Checkout, navCtrl: this.navCtrl })
             }
 
             this.viewCtrl.dismiss();

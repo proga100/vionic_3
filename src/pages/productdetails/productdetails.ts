@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams,ToastController,ModalController,Events, LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { ThambnailPage } from '../../pages/thambnail/thambnail';
 import { SizeComponent } from '../../components/size/size';
 import { QuantityComponent } from '../../components/quantity/quantity';
 import { ReadmorePage } from '../../pages/readmore/readmore';
-import { Storage } from '@ionic/storage';
 import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 import { Cart } from '../../pages/cart/cart';
 
@@ -32,6 +32,8 @@ export class ProductdetailsPage {
   pr: any[];
   par: any;
   private loading: any;
+
+  qty:any;
  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
@@ -45,9 +47,10 @@ export class ProductdetailsPage {
     this.prod_id = navParams.get('prod_id');
        //Create loading
    this.loading = this.loadingCtrl.create();
+   this.qty =1;
 	
    this.wooCommerce = wooProvider.WooCommerce;
-	
+	 storage.set('name', 'Max');
    
    //Load more products
    if (this.wooCommerce) {
@@ -95,7 +98,18 @@ export class ProductdetailsPage {
    modal.present(); 
   }
   quantity() {
+    let qt = '';
   let modal = this.modalCtrl.create(QuantityComponent);
+  let qs = modal.onDidDismiss(data => {
+    // Do things with data coming from modal, for instance :
+   
+    this.qty = data;
+   
+return data;
+});
+
+
+console.log(this.qty);
    modal.present(); 
   }
   readMore(){
@@ -114,7 +128,10 @@ let product = this.product;
 product.id = this.product['virtuemart_product_id'];
 product.reg_price =  this.product['reg_price'];
 product.price =  this.product['reg_price'];
-//console.log(product.reg_price);
+
+console.log(product);
+
+
     //counting selected attribute options
     let count = 0;
     /*
@@ -142,16 +159,21 @@ product.price =  this.product['reg_price'];
       return; 
     }
 */
-    this.storage.get("cart").then((data) => {
 
+
+
+
+    this.storage.get("cart").then((data) => {
+     
       if (data == undefined || data.length == 0) {
         data = [];
 
         data.push({
           "product": product,
-          "qty": 1,
+          "qty": this.qty,
           "amount": parseFloat(product.price)
         });
+
           /*
         if(this.selectedVariation){
           data[0].variation = this.selectedVariation;
@@ -197,25 +219,24 @@ product.price =  this.product['reg_price'];
           if(this.selectedVariation){
             data.push({
               product: product,
-              qty: 1,
+              qty: this.qty,
               amount: parseFloat(this.selectedVariation.price),
               variation: this.selectedVariation
             })
           } else {
             data.push({
               product: product,
-              qty: 1,
+              qty: this.qty ,
               amount: parseFloat(product.price)
             })
           }
         }
 
       }
-
+      
       this.storage.set("cart", data).then(() => {
-        console.log("Cart Updated");
-        console.log(data);
-
+     
+        
         this.events.publish("updateCart");
 
         this.toastCtrl.create({
@@ -226,6 +247,8 @@ product.price =  this.product['reg_price'];
      
 
       })
+
+      
       this.navCtrl.push(Cart);
 
     })

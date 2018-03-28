@@ -22,6 +22,8 @@ export class HomePage {
   page: number;
   images: string[] = [];
   private loading: any;
+  public width: any;
+  public height:any;
   
 
   
@@ -32,7 +34,17 @@ export class HomePage {
   ) {
     //Create loading
     this.loading = this.loadingCtrl.create();
-	
+   this.getMeta('https://www.cisupplystore.com/newvm/images/stories/virtuemart/category/ven1-72929492003pc_large.jpg',
+  
+(width, height)=> {
+  this.height = height;
+  this.width = width;
+
+  }
+  ) ;
+  console.log(this.height);
+
+ 
     this.wooCommerce = wooProvider.WooCommerce;
        //Load more products
        if (this.wooCommerce) {
@@ -50,6 +62,15 @@ export class HomePage {
     CatagoryList(){
      this.navCtrl.push(CatagorylistPage);
   }
+  getMeta(url, callback) {
+   let img = new Image();
+    img.src = url;
+  img.onload = () =>{ 
+    callback(img.height, img.width);        
+    
+    }
+ 
+}
   loadCats() {
       //Show Loading
       this.loading.present();

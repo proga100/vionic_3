@@ -3,6 +3,7 @@ import {IonicPage, Platform, LoadingController,AlertController,Nav,NavController
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+
 import { WooCommerceProvider } from "../providers/woocommerce/woocommerce";
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 // import { VendorsPage } from '../pages/vendors/vendors';
@@ -13,6 +14,7 @@ import { SignupPage} from '../pages/signup/signup';
 import { AccountPage} from '../pages/account/account';
  import { Cart } from '../pages/cart/cart';
 import { Checkout } from '../pages/checkout/checkout';
+
 //import { Settings } from "settings";
 import { CacheService } from "ionic-cache";
 @Component({
@@ -44,7 +46,7 @@ export class MyApp {
                 this.user = {};
 		 //Create loading
      this.loading = this.loadingCtrl.create();
-    // this.ionViewDidEnter();	
+    this.ionViewDidEnter();	
      this.events.subscribe("user:loggedIn", () => {
       this.ionViewDidEnter();	
     
@@ -78,13 +80,9 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-   // this.nav.setRoot(page.component);
-    	
-  //	console.log('subcategory:',catagory);
+  
 
-  if (page=='cart'){
+  if (page=='checkout'){
     this.nav.push(Checkout);
     return;
 
@@ -221,10 +219,7 @@ LoadMenuCats(){
        
      }
     
-     this.storage.set("categories", this.categories).then((data) => {
-          
-    
-    })
+   
 
 
 

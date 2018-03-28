@@ -1,17 +1,7 @@
-page-catagorylist {
+page-catagory {
 .toolbar-md {
     padding: 4px;
-    min-height: 46px;
-}
-.selctanother
-{
-      font-size: 15px;
-    font-weight: 100;
-}
-.toolbar-md {
-    padding: 4px;
-border-color: #332f20;
-    background: #332f20;
+    min-height: 40px;
 }
 .homeproduct img
 {
@@ -80,7 +70,11 @@ border-color: #332f20;
     background: rgba(56, 12, 12, 0.22);
 }
 
-
+.toolbar
+{
+    position: absolute;
+    z-index: 9999;
+}
 .list {
     margin: 0;
 }
@@ -172,7 +166,6 @@ border-color: #332f20;
       color: #716d62;
   }
 
-  
 
    .recommendation ion-col[col-6] img {
     max-width: 200px ;
@@ -311,7 +304,6 @@ ion-app._gmaps_cdv_ .nav-decor{
     border-bottom: solid 3px #716d62;
     font-size: 16px;
 }
-
 .bar-button-md:first-child {
     margin-left: 0;
     background: #f8e71c;
@@ -321,42 +313,16 @@ ion-app._gmaps_cdv_ .nav-decor{
     border-color: #000;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.selctanother .toolbar-title
-{
-      font-size: 15px;
-    font-weight: 100;
 }
-.compareitems .toolbar-background
-{
-      border-color: #ece052;
-    background: #ece052;
+.checkbox-md .checkbox-checked {
+    border-color: #f8e71c!important;
+    background-color: #f8e71c!important;
 }
-.compareitems .toolbar-title
+.checkbox-md .checkbox-checked .checkbox-inner
 {
-      font-size: 15px;
-    color:#000;
-        text-align: center;
+      border-color: #000;
 }
+
 
 .subcat_class ion-col {
     float: left !important;
@@ -375,23 +341,4 @@ ion-app._gmaps_cdv_ .nav-decor{
     max-width: 200px;
     margin: 10% auto;
     height: 200px;
-}
-.selected img
-{
-opacity: 0.5;
-    position: absolute;
-    z-index: 9;
-    top: 0;
-    margin: 0!important;
-    left: 0;
-    right: 0;
-    width: 100%!important;
-    height: 100%;
-}
-ion-list.selected.list.list-md img{
-    max-width: 100%;
-    height: 100%;
-   
-
-}
 }

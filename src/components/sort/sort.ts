@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the SortComponent component.
@@ -14,9 +15,13 @@ export class SortComponent {
 
   text: string;
 
-  constructor() {
-    console.log('Hello SortComponent Component');
-    this.text = 'Hello World';
+  constructor(public viewCtrl: ViewController) {
+   // console.log('Hello SortComponent Component');
+   // this.text = 'Hello World';
+  }
+
+  sort( $event){
+    this.viewCtrl.dismiss($event);
   }
 
 }

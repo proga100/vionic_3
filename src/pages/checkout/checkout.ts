@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
-import { Http, Headers } from "@angular/http";
+import { Http, Headers,Response  } from "@angular/http";
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
  import { WooCommerceProvider } from "../../providers/woocommerce/woocommerce";
 // import { HomePage } from '../home/home';
 // import { Menu } from '../menu/menu';
-// import { OrderPlacedPage } from '../order-placed/order-placed';
+import { OrderPlacedPage } from '../order-placed/order-placed';
 
 import { Settings } from "../../settings";
 
@@ -29,12 +30,19 @@ export class Checkout {
   country: any;
   billing_state: any;
   shipping_state: any;
+  apiUrl: string = Settings.store_url + "/index.php?option=com_ajax&plugin=vprodbycat&format=json&type=orders";
+  posts:{};
+  product_ids:any[];
+   quantity: any[];
+   post_products:any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, 
     public alertCtrl: AlertController,
    //  public payPal: PayPal,
       private loadingController: LoadingController, 
   //    public iab: InAppBrowser, 
+  private https: HttpClient,
       private http: Http,
       private wooProvider: WooCommerceProvider,
        public toastCtrl: ToastController )
@@ -126,7 +134,7 @@ export class Checkout {
            this.newOrder.billing.zip=customer_info.zip;
           
 
-       console.log('cou', this.country);
+    
           
             this.newOrder.billing.phone=customer_info.phone_1;
 
@@ -436,9 +444,9 @@ setBillingState(country_id){
 
           orderData.order = data;
 
-          this.wooCommerce.postAsync('type=orders', orderData).then((data) => {
+          this.wooCommerce.postAsyncme('type=orders', orderData).then((data) => {
             alert("Order placed successfully!");
-
+           
             let response = (JSON.parse(data.body).order);
 
             // this.alertCtrl.create({
@@ -522,24 +530,7 @@ setBillingState(country_id){
         orderData.order = data;
         console.log(orderData)
 
-        this.wooCommerce.postAsync("type=orders", orderData.order).then((data) => {
-
-          let response = (JSON.parse(data.body));
-          console.log(response)
-          // this.alertCtrl.create({
-          //   title: "Order Placed Successfully",
-          //   message: "Your order has been placed successfully. Your order number is " + response.order_number,
-          //   buttons: [{
-          //     text: "OK",
-          //     handler: () => {
-          //       this.navCtrl.setRoot(HomePage);
-          //     }
-          //   }]
-          // }).present();
-          loading.dismiss();
-          this.navCtrl.push('OrderPlacedPage', { orderNumber: response.number });
-
-        })
+     
 
       })
 
@@ -547,6 +538,82 @@ setBillingState(country_id){
 
 
   }
+
+  
+
+  makeorder() {
+  
+    let headers = new HttpHeaders();
+    headers.append('Api-User-Agent', 'Example/1.0');
+    headers.append(    'Authorization', 'my-token');
+headers = headers.set('Content-Type', 'application/x-www-form-urlencoded; charset=utf-8');
+    let apiUrl: string = this.apiUrl;
+
+    let loading = this.loadingController.create();
+ 
+   let httpParams = new HttpParams();
+
+this.storage.get("cart").then( (data)=>{
+  let cartItems = data;
+
+if(cartItems && cartItems.length > 0){
+  cartItems.forEach(function(value, key, map){
+
+    httpParams = httpParams.append('product_ids[]', value['product']['virtuemart_product_id']);
+   httpParams = httpParams.append('quantity[]', value['qty']);
+   
+   });
+
+   this.https.post(apiUrl,httpParams,{headers: headers}) 
+   .subscribe((res) => {
+             let response = res;
+      
+             if (response['error_code']) {
+         this.toastCtrl.create({
+           message: response['error_description'],
+           duration: 5000
+         }).present();
+
+         loading.dismiss();
+         return;
+       }
+
+       if (response['success']==true) {
+         this.toastCtrl.create({
+           message: 'Order Placed successfully',
+           duration: 5000
+         }).present();
+         loading.dismiss();
+        
+       this.navCtrl.push(OrderPlacedPage, { orderNumber: response['data'][0]});
+         return;
+       }
+
+       
+     }, (err) => {
+       loading.dismiss();
+       this.toastCtrl.create({
+           message: "An error occurred.",
+           duration: 5000
+         }).present();
+     });
+ 
+
+} else {
+  this.toastCtrl.create({
+    message: "Cart is empty",
+    duration: 2000,
+    showCloseButton: true
+  }).present();
+}
+
+  })
+
+ 
+   
+   
+     }
+
 
   makePaymentViaPayUMoney(data, total){
 

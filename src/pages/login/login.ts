@@ -30,7 +30,8 @@ export class LoginPage {
 
     //public http: Http,
         public toastCtrl: ToastController, public storage: Storage, public alertCtrl: AlertController, 
-    private events: Events, private loadingController: LoadingController,public modalCtrl: ModalController,private https: HttpClient, public http: Http) {
+    private events: Events, private loadingController: LoadingController,public modalCtrl: ModalController,
+    private https: HttpClient, public http: Http) {
 
     this.username = "";
     this.password = "";
@@ -54,6 +55,8 @@ export class LoginPage {
     headers.append('Api-User-Agent', 'Example/1.0');
     headers.append(    'Authorization', 'my-token');
 headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+let userinf = [this.username, this.password  ];
+
     let apiUrl: string = Settings.store_url + "/index.php?option=com_jbackend&view=request&action=post&module=user&resource=login&username=" + this.username + "&password=" + this.password+"&api_key="+Settings.jbackend_api_key;
 
     let loading = this.loadingController.create();
@@ -81,8 +84,8 @@ headers = headers.set('Content-Type', 'application/json; charset=utf-8');
           loading.dismiss();
           return;
         }
-
-
+      
+        this.storage.set("userLogin", userinf );
         this.storage.set("userLoginInfo", response).then((data) => {
           
           this.alertCtrl.create({
@@ -96,10 +99,11 @@ headers = headers.set('Content-Type', 'application/json; charset=utf-8');
             loading.dismiss();
         
                      
-                        this.navCtrl.setRoot(HomePage);
+                      
                 
                 if (this.navParams.get("next")) {
-                  this.navCtrl.setRoot(HomePage);
+            
+                  this.navCtrl.setRoot(this.navParams.get("next"));
                 } else {
                   this.navCtrl.setRoot(HomePage);
                 }

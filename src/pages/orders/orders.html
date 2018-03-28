@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>Your Orders</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let order of orders">
+
+    <ion-item-divider color="danger">
+      <ion-row>
+        <ion-col>
+          Order # {{ order.id }}
+        </ion-col>
+        <ion-col style="text-align: right;">
+          {{ order.created_at | date }}
+        </ion-col>
+      </ion-row>
+    </ion-item-divider>
+    <ion-list>
+      <ion-item *ngFor="let product of order.line_items">
+        <!--<ion-thumbnail item-left>
+        <img src="http://placehold.it/64/64" />
+      </ion-thumbnail>-->
+
+        <h2> {{ product.name }} </h2>
+        <p>X {{ product.quantity }}</p>
+        <p>
+          <span [innerHTML]="product.price"></span>
+        </p>
+
+        <button ion-button icon clear item-right (click)="goToProductPage(product.product_id)">
+        <ion-icon name="eye"></ion-icon>
+      </button>
+      </ion-item>
+      <ion-item-divider>
+        <ion-row no-padding>
+          <ion-col no-padding class="address_details">
+            Billing Details
+            <p item-left>{{order.billing_address.first_name}} {{order.billing_address.last_name}}</p>
+            <p item-left>{{order.billing_address.address_1}}, {{order.billing_address.address_2}}</p>
+            <p item-left>{{order.billing_address.city}}, {{order.billing_address.state}}</p>
+            <p item-left>{{order.billing_address.postcode}}. {{order.billing_address.country}}</p>
+            <p item-left>{{order.billing_address.phone }}</p>
+          </ion-col>
+          <ion-col no-padding class="address_details">
+            Shipping Details
+            <p item-left>{{order.shipping_address.first_name}} {{order.shipping_address.last_name}}</p>
+            <p item-left>{{order.shipping_address.address_1}}, {{order.shipping_address.address_2}}</p>
+            <p item-left>{{order.shipping_address.city}}, {{order.shipping_address.state}}</p>
+            <p item-left>{{order.shipping_address.postcode}}. {{order.shipping_address.country}}</p>
+            <p item-left>{{order.shipping_address.phone }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-item-divider>
+      <ion-grid>
+        <ion-row no-padding>
+          <ion-col no-padding>
+            <ion-chip [color]="order.status">
+              <ion-label> {{ order.status | titlecase }} </ion-label>
+            </ion-chip>
+          </ion-col>
+          <ion-col no-padding>
+            <p item-right>{{ order.currency}} {{ order.total}} paid via {{ order.payment_details.method_title}}</p>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-list>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMoreOrders($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

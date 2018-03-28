@@ -13,13 +13,24 @@ import { ViewController } from 'ionic-angular';
 export class QuantityComponent {
 
   text: string;
+ public qty:any;
 
   constructor(public viewCtrl: ViewController) {
-    console.log('Hello QuantityComponent Component');
-    this.text = 'Hello World';
+   // console.log('Hello QuantityComponent Component');
+   // this.text = 'Hello World';
   }
   closeModal() {
 
+ 
     this.viewCtrl.dismiss();
+  
+  }
+
+  mcqAnswer($event){
+
+  
+   this.qty = $event;
+  
+    this.viewCtrl.dismiss($event);
   }
 }

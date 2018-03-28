@@ -1,17 +1,17 @@
-<ion-list radio-group>
+<ion-list radio-group (ionChange)="sort($event)" >
   <ion-list-header>
      SORT BY
   </ion-list-header>
-  <ion-item>
+   <!--  <ion-item>
     <ion-label>POPULARITY</ion-label>
-    <ion-radio checked="true" value="go"></ion-radio>
-  </ion-item>
+ <ion-radio checked="true" value="pop"></ion-radio>
+  </ion-item> !-->
   <ion-item>
     <ion-label>HIGHEST PRICE </ion-label>
-    <ion-radio value="rust"></ion-radio>
+    <ion-radio checked="true" value="high"></ion-radio>
   </ion-item>
   <ion-item>
     <ion-label>LOWEST PRICE</ion-label>
-    <ion-radio value="rust"></ion-radio>
+    <ion-radio value="low"></ion-radio>
   </ion-item>
 </ion-list>
