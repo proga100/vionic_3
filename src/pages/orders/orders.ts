@@ -1,7 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { Settings } from '../../settings';
-import * as WC from 'woocommerce-api';
+import * as WC from 'virtuemart-api';
 // import { ProductDetails } from "../product-details/product-details";
 import { Storage } from '@ionic/storage';
 

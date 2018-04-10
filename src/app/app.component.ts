@@ -108,12 +108,15 @@ export class MyApp {
   
    initPushNotification() {
 	 
-	
+ //   alert('ll');
     
     if (!this.platform.is('cordova')) {
       console.warn('Push notifications not initialized. Cordova is not available - Run in physical device'); 
-	  return;
+    return;
+    
     }
+
+
     const options: PushOptions = {
       android: {
         senderID: '819477694829',
@@ -128,9 +131,9 @@ export class MyApp {
       windows: {}
     };
     const pushObject: PushObject = this.push.init(options);
-
+    // alert('sss');
     pushObject.on('registration').subscribe((data: any) => {
-    // alert('device token -> ' + data.registrationId);
+     alert('device token -> ' + data.registrationId);
       //TODO - send device token to server
 
     
@@ -138,12 +141,13 @@ export class MyApp {
       let topic = "groups";
       pushObject.subscribe(topic).then((res:any) => {
           console.log("subscribed to topic: ", res);
+          alert(topic);
       });
       
     });
-
+    // alert('ooo');
     pushObject.on('notification').subscribe((data: any) => {
-     // alert('message -> ' + data.message);
+      alert('message -> ' + data.message);
 	  
       //if user using app and push notification comes
       if (data.additionalData.foreground) {
@@ -159,7 +163,7 @@ export class MyApp {
             handler: () => {
               //TODO: Your logic here
               this.nav.push(HomePage, { message: data.message });
-			 //  alert('device tokenize -> ' +  data.message);
+			   alert('device tokenize -> ' +  data.message);
             }
           }]
         });
@@ -182,16 +186,16 @@ export class MyApp {
             handler: () => {
               //TODO: Your logic here
               this.nav.push(HomePage, { message: data.message });
-			 //  alert('device tokenize -> ' +  data.message);
+			  alert('device tokenize -> ' +  data.message);
             }
           }]
         });
         confirmAlert.present();
 		
-	//	alert('Push notification clicked');
+		alert('Push notification clicked');
       }
     });
-
+  //  alert('end');
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
   }
 
